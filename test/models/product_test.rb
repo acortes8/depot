@@ -33,7 +33,7 @@ class ProductTest < ActiveSupport::TestCase
     Product.new(title:        "My Book Title",
                 description:  "yyy",
                 price:        1,
-                image_url:    "zzz.jpg")
+                image_url:    image_url)
   end
 
   test "image url" do
