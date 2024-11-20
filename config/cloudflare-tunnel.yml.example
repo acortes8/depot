@@ -1,0 +1,7 @@
+tunnel: CHANGE_ME
+credentials-file: CHANGE_ME
+
+ingress:
+  - hostname: localhost.depotapp.org
+    service: http://localhost:3000
+  - service: http_status:404
