@@ -40,6 +40,26 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  # Don't actually send emails
+  config.action_mailer.delivery_method = :test
+  
+=begin
+  Rails.application.configure do
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.raise_delivery_errors = true
+  
+    config.action_mailer.smtp_settings = {
+      address:              "smtp.gmail.com",
+      port:                 587,
+      domain:               "depot.com",
+      authentication:       "plain",
+      user_name:            Rails.application.credentials.dig(:smtp, :user_name),
+      password:             Rails.application.credentials.dig(:smtp, :password),
+      enable_starttls_auto: true
+    }
+  end
+=end
+
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
