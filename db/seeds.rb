@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+User.create! name: 'dave',
+  password: Rails.application.credentials.dave_password
 Product.delete_all
 Product.create!(title: 'Docker for Rails Developers',
   description:
