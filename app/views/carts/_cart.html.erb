@@ -15,7 +15,7 @@
   </table>
 
   <div class="flex mt-1">
-    <%= button_to t('.empty'), cart, method: :delete,
+    <%= button_to t('.empty'), cart_path(cart, locale: I18n.locale), method: :delete,
       class: 'ml-4 rounded-lg py-1 px-2 text-white bg-green-600' %>
 
     <%= button_to t('.checkout'), new_order_path(locale: I18n.locale),
