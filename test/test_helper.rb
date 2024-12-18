@@ -12,11 +12,15 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
-class ActionDispatch::IntegrationTest
-  def default_url_options
-    { locale: I18n.locale }
+module ActionDispatch::Integration
+  class Session
+    def default_url_options
+      { locale: I18n.locale }
+    end
   end
-  
+end
+
+class ActionDispatch::IntegrationTest 
   def login_as(user)
     if respond_to? :visit
       visit login_url
