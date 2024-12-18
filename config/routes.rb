@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :products
 
-  scope '(:locale)' do
+  scope '(:locale)', locale: /en|es/ do
     resources :orders
     resources :line_items
     resources :carts

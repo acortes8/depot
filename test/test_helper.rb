@@ -13,6 +13,10 @@ class ActiveSupport::TestCase
 end
 
 class ActionDispatch::IntegrationTest
+  def default_url_options
+    { locale: I18n.locale }
+  end
+  
   def login_as(user)
     if respond_to? :visit
       visit login_url

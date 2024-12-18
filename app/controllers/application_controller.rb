@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :authorize
   
   protected
+    def default_url_options
+      { locale: I18n.locale }
+    end
+
     def set_i18n_locale_from_params
       if params[:locale]
         if I18n.available_locales.map(&:to_s).include?(params[:locale])
