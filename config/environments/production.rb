@@ -64,6 +64,20 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "depot_production"
+  
+  Rails.application.configure do
+    config.action_mailer.delivery_method = :smtp
+  
+    config.action_mailer.smtp_settings = {
+      address:              "smtp.gmail.com",
+      port:                 587,
+      domain:               "pi.depotapp.org",
+      authentication:       "plain",
+      user_name:            Rails.application.credentials.dig(:smtp, :user_name),
+      password:             Rails.application.credentials.dig(:smtp, :password),
+      enable_starttls_auto: true
+    }
+  end
 
   config.action_mailer.perform_caching = false
 

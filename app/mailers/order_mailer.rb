@@ -1,5 +1,6 @@
 class OrderMailer < ApplicationMailer
-  default from: 'Depot <depot@depot.com>'
+  default from:
+    "Depot App <#{Rails.application.credentials.dig(:smtp, :user_name)}>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

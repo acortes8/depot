@@ -6,7 +6,8 @@ class SupportRequestMailer < ApplicationMailer
   #   en.support_request_mailer.respond.subject
   #
   
-  default from: "support@example.com"
+  default from:
+    "Depot Support <#{Rails.application.credentials.dig(:smtp, :user_name)}>"
   
   def respond(support_request)
     @support_request = support_request

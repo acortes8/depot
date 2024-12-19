@@ -2,7 +2,6 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts << "localhost.depotapp.org"
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
@@ -36,14 +35,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
-
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  # Don't actually send emails
-  config.action_mailer.delivery_method = :test
   
-=begin
   Rails.application.configure do
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.raise_delivery_errors = true
@@ -51,14 +43,13 @@ Rails.application.configure do
     config.action_mailer.smtp_settings = {
       address:              "smtp.gmail.com",
       port:                 587,
-      domain:               "depot.com",
+      domain:               "pi.depotapp.org",
       authentication:       "plain",
       user_name:            Rails.application.credentials.dig(:smtp, :user_name),
       password:             Rails.application.credentials.dig(:smtp, :password),
       enable_starttls_auto: true
     }
   end
-=end
 
   config.action_mailer.perform_caching = false
 

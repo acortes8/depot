@@ -1,5 +1,5 @@
 class ApplicationMailbox < ActionMailbox::Base
   # routing /something/i => :somewhere
 
-  routing "support@example.com" => :support
+  routing Rails.application.credentials.dig(:smtp, :user_name) => :support
 end
