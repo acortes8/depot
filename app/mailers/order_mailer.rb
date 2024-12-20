@@ -1,12 +1,14 @@
 class OrderMailer < ApplicationMailer
-  default from:
-    "Depot App <#{Rails.application.credentials.dig(:smtp, :user_name)}>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.order_mailer.received.subject
   #
+  
+  default from:
+    "Depot App <#{Rails.application.credentials.dig(:smtp, :user_name)}>"
+
   def received(order)
     @order = order
 
@@ -18,6 +20,7 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.shipped.subject
   #
+  
   def shipped(order)
     @order = order
 

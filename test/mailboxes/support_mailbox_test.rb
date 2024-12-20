@@ -11,7 +11,7 @@ class SupportMailboxTest < ActionMailbox::TestCase
   
   test "we create a SupportRequest when we get a support email" do
     receive_inbound_email_from_mail(
-      to: "support@example.com",
+      to: Rails.application.credentials.dig(:smtp, :user_name),
       from: "chris@somewhere.net",
       subject: "Need help",
       body: "I can't figure out how to check out!!"
@@ -31,7 +31,7 @@ class SupportMailboxTest < ActionMailbox::TestCase
     non_customer = orders(:other_customer)
 
     receive_inbound_email_from_mail(
-      to: "support@example.com",
+      to: Rails.application.credentials.dig(:smtp, :user_name),
       from: recent_order.email,
       subject: "Need help",
       body: "I can't figure out how to check out!!"
