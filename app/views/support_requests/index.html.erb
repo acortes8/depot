@@ -1,69 +1,63 @@
-<ul>
+<ul class="space-y-6">
   <% @support_requests.each do |support_request| %>
-    <li>
-      <h1>
+    <li class="border rounded-lg p-6 shadow-sm bg-white">
+      <h1 class="text-lg font-semibold mb-2">
         On <%= support_request.created_at.to_formatted_s(:long) %>
-        <code><%= support_request.email %></code> writes:
+        <code class="text-blue-600 font-mono"><%= support_request.email %></code> writes:
       </h1>
-      <p>
-        <blockquote>
-          <h2><%= support_request.subject %></h2>
-          <%= support_request.body %>
-        </blockquote>
-      </p>
+      <blockquote class="border-l-4 border-gray-300 pl-4 italic">
+        <h2 class="font-bold text-xl mb-2"><%= support_request.subject %></h2>
+        <p class="text-gray-700"><%= support_request.body %></p>
+      </blockquote>
       <% if support_request.order %>
-        <h3>Recent Order</h3>
-        <dl>
-          <dt>Name</dt>
-          <dd><%= support_request.order.name %></dd>
+        <h3 class="font-semibold text-lg mb-2">Recent Order</h3>
+        <dl class="space-y-2">
+          <dt class="font-medium text-gray-600">Name</dt>
+          <dd class="ml-4 text-gray-800"><%= support_request.order.name %></dd>
 
-          <dt>Email</dt>
-          <dd><%= support_request.order.email %></dd>
+          <dt class="font-medium text-gray-600">Email</dt>
+          <dd class="ml-4 text-gray-800"><%= support_request.order.email %></dd>
 
-          <dt>Address</dt>
-          <dd><%= support_request.order.address %></dd>
+          <dt class="font-medium text-gray-600">Address</dt>
+          <dd class="ml-4 text-gray-800"><%= support_request.order.address %></dd>
 
-          <dt>PayType</dt>
-          <dd><%= support_request.order.pay_type %></dd>
+          <dt class="font-medium text-gray-600">PayType</dt>
+          <dd class="ml-4 text-gray-800"><%= support_request.order.pay_type %></dd>
 
-          <dt>Line Items</dt>
-          <dd>
-            <ul>
+          <dt class="font-medium text-gray-600">Line Items</dt>
+          <dd class="ml-4 text-gray-800">
+            <ul class="list-disc ml-6 space-y-1">
               <% support_request.order.line_items.each do |line_item| %>
                 <li>
-                  <%= line_item.product.title %>
-                  (<%= line_item.product.price %>)
+                  <span class="font-semibold"><%= line_item.product.title %></span>
+                  (<span class="text-gray-600"><%= line_item.product.price %></span>)
                 </li>
               <% end %>
             </ul>
           </dd>
         </dl>
       <% else %>
-        <h3 class="notice">No associated order</h3>
+        <h3 class="text-red-500 font-medium">No associated order</h3>
       <% end %>
 
       <% if support_request.response.blank? %>
-        <%= form_with(model: support_request,
-                      local: true,
-                      class: "depot_form") do |form| %>
+        <%= form_with(model: support_request, local: true, class: "space-y-4") do |form| %>
           <div class="field">
-            <%= form.label :response, "Write Response" %>
+            <%= form.label :response, "Write Response", class: "block font-medium text-gray-700" %>
             <%= form.rich_text_area :response, id: :support_request_response %>
           </div>
           <div class="actions">
-            <%= form.submit "Send Response" %>
+            <%= form.submit "Send Response", class: "py-2 px-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700" %>
           </div>
         <% end %>
       <% else %>
-        <h4>Our response:</h4>
-        <p>
-          <blockquote>
-            <%= support_request.response %>
-          </blockquote>
-        </p>
+        <h4 class="font-semibold text-lg mt-4">Our response:</h4>
+        <blockquote class="border-l-4 border-green-500 pl-4 italic">
+          <%= support_request.response %>
+        </blockquote>
       <% end %>
 
-      <hr>
+      <hr class="mt-6 border-t border-gray-200">
     </li>
   <% end %>
 </ul>
