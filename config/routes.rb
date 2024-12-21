@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :support_requests, only: %i[ index update ]
   resources :users
   resources :products
+  get 'questions', to: 'store#questions', as: 'questions'
+  get 'contact', to: 'store#contact', as: 'contact'
 
   scope '(:locale)', locale: /en|es/ do
     resources :orders
