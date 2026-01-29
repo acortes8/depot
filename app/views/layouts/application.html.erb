@@ -14,7 +14,8 @@
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen">
+
     <header class="bg-green-700">
       <aside data-controller="locale">
         <%= form_tag store_index_path, class: 'locale' do %>
@@ -28,11 +29,11 @@
       <h1><%= @page_title %></h1>
     </header>
 
-    <section class="flex">
+    <section class="flex flex-grow">
       <nav class="bg-green-900 p-6">
         <%= render partial: 'layouts/cart', locals: {cart: @cart } %>
 
-        <ul class="text-gray-300 leading-8">
+        <ul class="text-gray-300 leading-8 mt-6">
           <li><%= link_to t('.home'), store_index_path, class:
             "font-medium text-lg uppercase tracking-widest font-mono mb-3"
             %></li>
@@ -67,7 +68,7 @@
         <% end %>
       </nav>
 
-      <main class="container mx-auto mt-4 px-5 flex">
+      <main class="container mx-auto mt-4 px-5 mb-20 flex-grow">
         <%= yield %>
       </main>
     </section>
