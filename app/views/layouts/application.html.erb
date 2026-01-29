@@ -29,41 +29,41 @@
       <h1><%= @page_title %></h1>
     </header>
 
-    <section class="flex flex-grow">
-      <nav class="bg-green-900 p-6">
+    <section class="flex flex-col md:flex-row flex-grow">
+      <nav class="bg-green-900 p-4 md:p-6 flex flex-col md:flex-col items-center md:items-start">
         <%= render partial: 'layouts/cart', locals: {cart: @cart } %>
 
-        <ul class="text-gray-300 leading-8 mt-6">
+        <ul class="flex flex-row md:flex-col text-gray-300 leading-8 mt-2 md:mt-6 space-x-4 md:space-x-0 md:space-y-2 justify-center md:justify-start">
           <li><%= link_to t('.home'), store_index_path, class:
-            "font-medium text-lg uppercase tracking-widest font-mono mb-3"
+            "font-medium text-lg uppercase tracking-widest font-mono block px-2 py-2"
             %></li>
           <li><%= link_to t('.questions'), questions_path, class:
-            "font-medium text-lg uppercase tracking-widest font-mono mb-3"
+            "font-medium text-lg uppercase tracking-widest font-mono block px-2 py-2"
             %></li>
           <li><%= link_to t('.contact'), contact_path, class:
-            "font-medium text-lg uppercase tracking-widest font-mono mb-3"
+            "font-medium text-lg uppercase tracking-widest font-mono block px-2 py-2"
             %></li>
         </ul>
 
         <% if session[:user_id]%>
           <hr class="my-2">
 
-          <ul class="text-gray-300 leading-8">
+          <ul class="flex flex-row md:flex-col text-gray-300 leading-8 space-x-4 md:space-x-0 md:space-y-2 justify-center md:justify-start">
             <li><%= link_to 'Orders', orders_path,
               class: "font-medium text-lg
-              uppercase tracking-widest font-mono mb-3" %></li>
+              uppercase tracking-widest font-mono block px-2 py-2" %></li>
             <li><%= link_to 'Support', support_requests_path,
               class: "font-medium text-lg
-              uppercase tracking-widest font-mono mb-3" %></li>
+              uppercase tracking-widest font-mono block px-2 py-2" %></li>
             <li><%= link_to 'Products', products_path,
               class: "font-medium text-lg
-              uppercase tracking-widest font-mono mb-3" %></li>
+              uppercase tracking-widest font-mono block px-2 py-2" %></li>
             <li><%= link_to 'Users', users_path,
               class: "font-medium text-lg
-              uppercase tracking-widest font-mono mb-3" %></li>
+              uppercase tracking-widest font-mono block px-2 py-2" %></li>
             <li><%= button_to 'Logout', logout_path, class:
               "font-medium text-lg
-              uppercase tracking-widest font-mono mb-3", method: :delete %></li>
+              uppercase tracking-widest font-mono block px-2 py-2", method: :delete %></li>
           </ul>
         <% end %>
       </nav>
